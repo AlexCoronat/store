@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from './models/product.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'store';
+  imgParent = '';
+  mostrar = true
+  onLoaded(img: string){
+    console.log('Loaded! Parent from '+ img)
+  }
+  mostrarImagen(){
+    this.mostrar = !this.mostrar
+  }
+
 }
