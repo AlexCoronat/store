@@ -7,6 +7,8 @@ import { Product } from 'src/app/models/product.model';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
+  total = 0
+  shoppingList: Product[]=[]
   products: Product[] = [
     {
       id: 1,
@@ -27,4 +29,10 @@ export class ProductsComponent {
       image: './assets/images/books.jpg'
   }
   ]
+  //recibe un producto como parametro y lo inserta a la lista vacía
+  addProdToCar(product: Product){
+    this.shoppingList.push(product)
+    this.total = this.shoppingList.reduce((suma, item) => suma + item.price,0)
+    console.log(this.total)
+  }
 }

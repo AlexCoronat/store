@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 
 @Component({
@@ -12,6 +12,12 @@ export class ProductComponent implements OnInit{
     name: '',
     price: 0,
     image: ''
+  }
+  //Se usa para poder exportar la variable
+  @Output() addedProduct = new EventEmitter
+
+  addToCar(){
+    this.addedProduct.emit(this.product)
   }
   constructor(){}
   ngOnInit(): void {
