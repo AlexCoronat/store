@@ -1,38 +1,26 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { StoreService } from 'src/app/services/store.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit{
   constructor(
+    private productsService: ProductsService,
     private storeService: StoreService
   ){}
+  ngOnInit(): void {
+    this.productsService.getAllProducts().subscribe(data =>{
+      this.products = data
+    })
+  }
   total = 0
   shoppingList: Product[]=[]
-  products: Product[] = [
-    {
-      id: 1,
-      name: 'Bicicleta',
-      price: 100,
-      image: './assets/images/bike.jpg'
-  },
-  {
-      id: 2,
-      name: 'Muñeca de trapo',
-      price: 180,
-      image: './assets/images/toy.jpg'
-  },
-  {
-      id: 3,
-      name: 'Libros',
-      price: 120,
-      image: './assets/images/books.jpg'
-  }
-  ]
+  products: Product[] = []
   //recibe un producto como parametro y lo inserta a la lista vacía
   addProdToCar(product: Product){
     this.storeService.addProd(product)
