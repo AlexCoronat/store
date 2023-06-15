@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-products',
@@ -7,6 +8,9 @@ import { Product } from 'src/app/models/product.model';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
+  constructor(
+    private storeService: StoreService
+  ){}
   total = 0
   shoppingList: Product[]=[]
   products: Product[] = [
@@ -31,8 +35,8 @@ export class ProductsComponent {
   ]
   //recibe un producto como parametro y lo inserta a la lista vacía
   addProdToCar(product: Product){
-    this.shoppingList.push(product)
-    this.total = this.shoppingList.reduce((suma, item) => suma + item.price,0)
+    this.storeService.addProd(product)
+    this.total = this.storeService.getTotal()
     console.log(this.total)
   }
 }
