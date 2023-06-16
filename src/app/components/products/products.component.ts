@@ -21,6 +21,9 @@ export class ProductsComponent implements OnInit{
   total = 0
   shoppingList: Product[]=[]
   products: Product[] = []
+  textToUperCase = 'Jesús Alejandro Corona Trujillo'
+  today = new Date()
+  date = new Date(2023,1,20)
   //recibe un producto como parametro y lo inserta a la lista vacía
   addProdToCar(product: Product){
     this.storeService.addProd(product)

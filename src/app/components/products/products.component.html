@@ -1,3 +1,11 @@
+
+<!-- Los pipes son "tuberías" que transforman un dato y regresan otro que para el usuario es mas
+comodo de ver -->
+<!-- <p>Fecha: {{ today |  date:'full' }}</p>
+<input type="text" [(ngModel)]="textToUperCase">
+<p>{{ textToUperCase | uppercase}}</p> -->
+<p>{{ textToUperCase | vocals }}</p>
+<p>Fecha: {{ date |  timeAgo }}</p>
 <div class="products--grid">
   <app-product
       [product]="prod"
