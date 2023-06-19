@@ -16,7 +16,7 @@ import {
   styleUrls: ['./img.component.scss']
 })
 export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-  @Input() img: string = '';
+  @Input() img = '';
   @Output() loaded = new EventEmitter<string>()
   imgDefault = './assets/images/perro.gif'
   counter = 0
